@@ -54,7 +54,7 @@ export const SitemapModal: React.FC<SitemapModalProps> = ({ isOpen, onClose, onN
             {SITEMAP_URLS.map((u, i) => (
               <div key={i} className="pl-4 my-1 border-l border-slate-800">
                 <p>&lt;url&gt;</p>
-                <p className="pl-4 text-emerald-300">&lt;loc&gt;[YOUR DOMAIN]{u.loc}&lt;/loc&gt;</p>
+                <p className="pl-4 text-emerald-300">&lt;loc&gt;https://agecalculator.app{u.loc}&lt;/loc&gt;</p>
                 <p className="pl-4 text-amber-300">&lt;changefreq&gt;{u.changefreq}&lt;/changefreq&gt;</p>
                 <p className="pl-4 text-pink-300">&lt;priority&gt;{u.priority}&lt;/priority&gt;</p>
                 <p>&lt;/url&gt;</p>

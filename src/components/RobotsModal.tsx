@@ -44,7 +44,7 @@ Allow: /terms-and-conditions
 Allow: /disclaimer
 
 # Sitemap directive
-Sitemap: https://[YOUR DOMAIN]/sitemap.xml`}
+Sitemap: https://agecalculator.app/sitemap.xml`}
           </pre>
         </div>
 

@@ -20,7 +20,7 @@ export const TermsPage: React.FC<TermsPageProps> = () => {
             Terms and Conditions
           </h1>
           <p className="text-xs text-slate-400 mt-2 font-mono">
-            Last Updated: [DATE]
+            Last Updated: August 2026
           </p>
         </div>
 
@@ -87,7 +87,7 @@ export const TermsPage: React.FC<TermsPageProps> = () => {
             </p>
             <p className="font-semibold text-slate-200 flex items-center gap-2 bg-slate-800 p-3 rounded-xl border border-slate-700">
               <Mail className="w-4 h-4 text-blue-400" />
-              <span>Legal Email: [YOUR EMAIL ADDRESS]</span>
+              <span>Legal Email: legal@agecalculator.app</span>
             </p>
           </section>
         </div>

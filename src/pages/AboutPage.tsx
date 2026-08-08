@@ -40,7 +40,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             <h3>Website Ownership &amp; Management</h3>
           </div>
           <p className="text-xs text-blue-200 leading-relaxed">
-            This website is owned and operated by <strong>[WEBSITE OWNER NAME]</strong>. We are committed to maintaining an open, ad-supported, accessible utility for visitors worldwide.
+            This website is owned and operated by <strong>Age Calculator Team</strong>. We are committed to maintaining an open, accessible utility for visitors worldwide.
           </p>
         </div>
 

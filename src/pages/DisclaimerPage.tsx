@@ -20,7 +20,7 @@ export const DisclaimerPage: React.FC<DisclaimerPageProps> = ({ onNavigate }) =>
             Website Disclaimer
           </h1>
           <p className="text-xs text-slate-400 mt-2 font-mono">
-            Last Updated: [DATE]
+            Last Updated: August 2026
           </p>
         </div>
 
