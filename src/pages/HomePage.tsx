@@ -5,7 +5,6 @@ import { ExamplesSection } from '../components/ExamplesSection';
 import { FAQSection } from '../components/FAQSection';
 import { PageRoute } from '../types';
 import {
-  Sparkles,
   Calendar,
   CheckCircle2,
   Clock,
@@ -23,19 +22,10 @@ interface HomePageProps {
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   return (
     <div className="space-y-10 pb-12">
-      {/* HERO SECTION & CALCULATOR INTEGRATION */}
-      <section className="pt-6 text-center max-w-4xl mx-auto px-4">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/15 border border-blue-500/30 text-blue-400 text-xs font-bold mb-3 shadow-xs">
-          <Sparkles className="w-4 h-4 text-blue-400" />
-          <span>100% Free &amp; Private Age Calculator</span>
-        </div>
-
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-100 tracking-tight leading-tight mb-6">
-          Calculate Your Exact Age
-        </h1>
-
+      {/* CALCULATOR INTEGRATION */}
+      <section className="pt-2 max-w-4xl mx-auto px-4">
         {/* AGE CALCULATOR CARD */}
-        <div id="main-calculator" className="text-left">
+        <div id="main-calculator">
           <AgeCalculatorForm />
         </div>
       </section>

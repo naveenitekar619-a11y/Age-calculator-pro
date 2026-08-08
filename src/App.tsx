@@ -3,7 +3,6 @@ import { PageRoute } from './types';
 import { SEOHead } from './components/SEOHead';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import { CookieConsent } from './components/CookieConsent';
 
 import { HomePage } from './pages/HomePage';
 import { CalculatorPage } from './pages/CalculatorPage';
@@ -90,9 +89,6 @@ export default function App() {
       <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {renderPageComponent()}
       </main>
-
-      {/* Cookie Consent Banner */}
-      <CookieConsent />
 
       {/* Site Footer */}
       <Footer onNavigate={handleNavigate} />
