@@ -23,7 +23,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   return (
     <div className="space-y-10 pb-12">
       {/* CALCULATOR INTEGRATION */}
-      <section className="pt-2 max-w-4xl mx-auto px-4">
+      <section className="pt-1 max-w-6xl mx-auto px-2 sm:px-3">
         {/* AGE CALCULATOR CARD */}
         <div id="main-calculator">
           <AgeCalculatorForm />

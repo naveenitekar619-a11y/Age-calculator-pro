@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   Calendar as CalendarIcon,
   RotateCcw,
@@ -42,6 +42,7 @@ export const AgeCalculatorForm: React.FC<AgeCalculatorFormProps> = ({
   });
 
   const [copied, setCopied] = useState(false);
+  const resultRef = useRef<HTMLDivElement>(null);
 
   const handleCalculate = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
@@ -56,6 +57,11 @@ export const AgeCalculatorForm: React.FC<AgeCalculatorFormProps> = ({
 
     const calculated = calculateAge(dob, asOfDate);
     setResult(calculated);
+
+    // Scroll directly to the calculated result card
+    setTimeout(() => {
+      resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
   };
 
   const handleReset = () => {
@@ -76,30 +82,30 @@ export const AgeCalculatorForm: React.FC<AgeCalculatorFormProps> = ({
   return (
     <div
       id={id}
-      className={`bg-slate-900 rounded-3xl border border-slate-800 shadow-2xl p-6 sm:p-8 max-w-4xl mx-auto ${className}`}
+      className={`bg-slate-900 rounded-2xl sm:rounded-3xl border border-slate-800 shadow-2xl px-3 sm:px-5 py-4 sm:py-6 max-w-6xl mx-auto ${className}`}
     >
-      <div className="flex items-center gap-3 mb-6">
-        <div className="p-3 bg-blue-600 text-white rounded-2xl shadow-md shadow-blue-500/20">
-          <CalendarIcon className="w-6 h-6" />
+      <div className="flex items-center gap-3 mb-3">
+        <div className="p-2.5 bg-blue-600 text-white rounded-xl shadow-md shadow-blue-500/20">
+          <CalendarIcon className="w-5 h-5 sm:w-6 sm:h-6" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold text-slate-100 tracking-tight">
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-100 tracking-tight">
             Age Calculator
           </h2>
-          <p className="text-sm text-slate-400">
-            Enter your date of birth and calculation date to get exact results
+          <p className="text-xs sm:text-sm text-slate-400">
+            Enter date of birth and calculation date to get exact results
           </p>
         </div>
       </div>
 
       {/* Form Controls */}
-      <form onSubmit={handleCalculate} className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <form onSubmit={handleCalculate} className="space-y-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {/* Date of Birth */}
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label
               htmlFor="dob-input"
-              className="block text-sm font-semibold text-slate-200"
+              className="block text-xs sm:text-sm font-semibold text-slate-200"
             >
               Date of Birth <span className="text-red-400">*</span>
             </label>
@@ -112,7 +118,7 @@ export const AgeCalculatorForm: React.FC<AgeCalculatorFormProps> = ({
                   setDob(e.target.value);
                   setErrorMessage(null);
                 }}
-                className="w-full px-4 py-3 rounded-xl border border-slate-700 bg-slate-800/90 text-slate-100 font-medium focus:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-base [color-scheme:dark]"
+                className="w-full px-3.5 py-2 rounded-xl border border-slate-700 bg-slate-800/90 text-slate-100 font-medium focus:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm sm:text-base [color-scheme:dark]"
                 required
               />
             </div>
@@ -120,13 +126,22 @@ export const AgeCalculatorForm: React.FC<AgeCalculatorFormProps> = ({
           </div>
 
           {/* Calculate Age As Of */}
-          <div className="space-y-2">
-            <label
-              htmlFor="asof-input"
-              className="block text-sm font-semibold text-slate-200"
-            >
-              Calculate Age As Of
-            </label>
+          <div className="space-y-1">
+            <div className="flex items-center justify-between">
+              <label
+                htmlFor="asof-input"
+                className="block text-xs sm:text-sm font-semibold text-slate-200"
+              >
+                Calculate Age As Of
+              </label>
+              <button
+                type="button"
+                onClick={() => setAsOfDate(todayStr)}
+                className="text-xs font-semibold text-blue-400 hover:text-blue-300 hover:underline"
+              >
+                Set to Today
+              </button>
+            </div>
             <div className="relative">
               <input
                 id="asof-input"
@@ -136,44 +151,35 @@ export const AgeCalculatorForm: React.FC<AgeCalculatorFormProps> = ({
                   setAsOfDate(e.target.value);
                   setErrorMessage(null);
                 }}
-                className="w-full px-4 py-3 rounded-xl border border-slate-700 bg-slate-800/90 text-slate-100 font-medium focus:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-base [color-scheme:dark]"
+                className="w-full px-3.5 py-2 rounded-xl border border-slate-700 bg-slate-800/90 text-slate-100 font-medium focus:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm sm:text-base [color-scheme:dark]"
               />
             </div>
-            <div className="flex items-center justify-between">
-              <p className="text-xs text-slate-400">Default is today&apos;s date</p>
-              <button
-                type="button"
-                onClick={() => setAsOfDate(todayStr)}
-                className="text-xs font-semibold text-blue-400 hover:text-blue-300 hover:underline"
-              >
-                Set to Today
-              </button>
-            </div>
+            <p className="text-xs text-slate-400">Default is today&apos;s date</p>
           </div>
         </div>
 
         {/* Friendly Error Validation */}
         {errorMessage && (
-          <div className="p-4 rounded-xl bg-red-950/60 border border-red-800/80 text-red-300 text-sm flex items-start gap-3 animate-in fade-in">
-            <AlertCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
+          <div className="p-2.5 rounded-xl bg-red-950/60 border border-red-800/80 text-red-300 text-xs sm:text-sm flex items-start gap-2.5 animate-in fade-in">
+            <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 text-red-400 shrink-0 mt-0.5" />
             <div className="font-medium">{errorMessage}</div>
           </div>
         )}
 
         {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
+        <div className="flex flex-col sm:flex-row items-center gap-2.5 pt-0.5">
           <button
             type="submit"
-            className="w-full sm:w-auto flex-1 bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3.5 px-6 rounded-xl shadow-md shadow-blue-600/25 hover:shadow-lg transition-all flex items-center justify-center gap-2 text-base active:scale-[0.99]"
+            className="w-full sm:w-auto flex-1 bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2.5 px-5 rounded-xl shadow-md shadow-blue-600/25 hover:shadow-lg transition-all flex items-center justify-center gap-2 text-sm sm:text-base active:scale-[0.99]"
           >
-            <Sparkles className="w-5 h-5" />
+            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
             Calculate Age
           </button>
 
           <button
             type="button"
             onClick={handleReset}
-            className="w-full sm:w-auto px-6 py-3.5 rounded-xl border border-slate-700 text-slate-300 font-semibold hover:bg-slate-800 hover:text-white transition-colors flex items-center justify-center gap-2 text-base"
+            className="w-full sm:w-auto px-5 py-2.5 rounded-xl border border-slate-700 text-slate-300 font-semibold hover:bg-slate-800 hover:text-white transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
           >
             <RotateCcw className="w-4 h-4 text-slate-400" />
             Reset
@@ -186,52 +192,76 @@ export const AgeCalculatorForm: React.FC<AgeCalculatorFormProps> = ({
 
       {/* RESULTS SECTION */}
       {result && (
-        <div className="mt-8 pt-8 border-t border-slate-800 space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-300">
+        <div ref={resultRef} className="mt-5 pt-5 border-t border-slate-800 space-y-5 animate-in fade-in slide-in-from-bottom-2 duration-300">
           {/* Main Exact Age Card */}
-          <div className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white p-6 sm:p-8 rounded-2xl shadow-xl relative overflow-hidden">
-            <div className="absolute -right-6 -bottom-6 w-36 h-36 bg-white/10 rounded-full blur-2xl pointer-events-none" />
+          <div className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white p-4 sm:p-5 rounded-2xl shadow-xl relative overflow-hidden">
+            <div className="absolute -right-6 -bottom-6 w-32 h-32 bg-white/10 rounded-full blur-2xl pointer-events-none" />
 
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-3">
               <div>
-                <span className="text-xs uppercase tracking-wider font-bold text-blue-200">
+                <span className="text-[10px] uppercase tracking-wider font-bold text-blue-200">
                   Calculated Result
                 </span>
-                <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight mt-0.5">
+                <h3 className="text-lg sm:text-xl font-extrabold tracking-tight mt-0.5">
                   Your Exact Age
                 </h3>
               </div>
 
               <button
                 onClick={handleCopyResult}
-                className="bg-white/20 hover:bg-white/30 text-white px-3.5 py-2 rounded-xl text-xs font-semibold backdrop-blur-xs transition-all flex items-center gap-1.5"
+                className="bg-white/20 hover:bg-white/30 text-white px-3 py-1.5 rounded-lg text-xs font-semibold backdrop-blur-xs transition-all flex items-center gap-1.5 active:scale-95"
                 title="Copy result to clipboard"
               >
                 {copied ? (
                   <>
-                    <Check className="w-4 h-4 text-emerald-300" />
+                    <Check className="w-3.5 h-3.5 text-emerald-300" />
                     <span>Copied!</span>
                   </>
                 ) : (
                   <>
-                    <Copy className="w-4 h-4" />
+                    <Copy className="w-3.5 h-3.5" />
                     <span>Copy Result</span>
                   </>
                 )}
               </button>
             </div>
 
-            <div className="my-2">
-              <div className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-                {result.years} <span className="text-2xl font-bold text-blue-200">Years</span>,{' '}
-                {result.months} <span className="text-2xl font-bold text-blue-200">Months</span>,{' '}
-                {result.days} <span className="text-2xl font-bold text-blue-200">Days</span>
+            {/* Square Boxes for Years, Months, Days */}
+            <div className="grid grid-cols-3 gap-2.5 sm:gap-3.5 my-3.5">
+              <div className="bg-white/15 backdrop-blur-md border border-white/25 rounded-xl sm:rounded-2xl py-3 px-2 text-center flex flex-col items-center justify-center shadow-inner transition-transform hover:scale-[1.02]">
+                <span className="text-2xl sm:text-4xl font-black text-white tracking-tight">
+                  {result.years}
+                </span>
+                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-blue-100 mt-0.5">
+                  Years
+                </span>
+              </div>
+
+              <div className="bg-white/15 backdrop-blur-md border border-white/25 rounded-xl sm:rounded-2xl py-3 px-2 text-center flex flex-col items-center justify-center shadow-inner transition-transform hover:scale-[1.02]">
+                <span className="text-2xl sm:text-4xl font-black text-white tracking-tight">
+                  {result.months}
+                </span>
+                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-blue-100 mt-0.5">
+                  Months
+                </span>
+              </div>
+
+              <div className="bg-white/15 backdrop-blur-md border border-white/25 rounded-xl sm:rounded-2xl py-3 px-2 text-center flex flex-col items-center justify-center shadow-inner transition-transform hover:scale-[1.02]">
+                <span className="text-2xl sm:text-4xl font-black text-white tracking-tight">
+                  {result.days}
+                </span>
+                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-blue-100 mt-0.5">
+                  Days
+                </span>
               </div>
             </div>
 
-            <p className="text-xs text-blue-100 mt-3 pt-3 border-t border-white/15">
-              Born on <strong className="text-white">{result.dobFormatted}</strong> • Age calculated as of{' '}
-              <strong className="text-white">{result.asOfFormatted}</strong>
-            </p>
+            <div className="bg-white/10 backdrop-blur-xs rounded-lg p-2.5 text-center border border-white/15">
+              <p className="text-xs sm:text-sm text-blue-100 leading-normal">
+                Born on <strong className="text-white font-bold">{result.dobFormatted}</strong> • Age calculated as of{' '}
+                <strong className="text-white font-bold">{result.asOfFormatted}</strong>
+              </p>
+            </div>
           </div>
 
           {/* Next Birthday Card */}
