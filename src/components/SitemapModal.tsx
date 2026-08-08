@@ -23,32 +23,32 @@ export const SitemapModal: React.FC<SitemapModalProps> = ({ isOpen, onClose, onN
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
-      <div className="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl border border-slate-200 max-h-[85vh] flex flex-col">
-        <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-xs">
+      <div className="bg-slate-900 rounded-2xl max-w-2xl w-full p-6 shadow-2xl border border-slate-800 max-h-[85vh] flex flex-col">
+        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
           <div className="flex items-center gap-2">
-            <div className="p-2 bg-blue-50 text-blue-600 rounded-lg">
+            <div className="p-2 bg-blue-500/15 text-blue-400 rounded-lg border border-blue-500/30">
               <FileCode className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-slate-900">
+              <h3 className="text-lg font-bold text-slate-100">
                 Website Sitemap (sitemap.xml)
               </h3>
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-slate-400">
                 Search Engine Indexing Hierarchy & Canonical Structure
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg hover:bg-slate-100"
+            className="text-slate-400 hover:text-slate-200 p-1.5 rounded-lg hover:bg-slate-800 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         <div className="overflow-y-auto my-4 space-y-3 pr-1">
-          <div className="p-3 bg-slate-900 text-slate-200 rounded-xl font-mono text-xs overflow-x-auto">
+          <div className="p-3 bg-slate-950 text-slate-200 rounded-xl font-mono text-xs overflow-x-auto border border-slate-800">
             <p className="text-blue-400">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</p>
             <p className="text-purple-300">&lt;urlset xmlns=&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot;&gt;</p>
             {SITEMAP_URLS.map((u, i) => (
@@ -63,7 +63,7 @@ export const SitemapModal: React.FC<SitemapModalProps> = ({ isOpen, onClose, onN
             <p className="text-purple-300">&lt;/urlset&gt;</p>
           </div>
 
-          <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider pt-2">
+          <h4 className="text-xs font-bold text-slate-200 uppercase tracking-wider pt-2">
             Interactive Navigation Index
           </h4>
 
@@ -71,18 +71,18 @@ export const SitemapModal: React.FC<SitemapModalProps> = ({ isOpen, onClose, onN
             {SITEMAP_URLS.map((u) => (
               <div
                 key={u.loc}
-                className="p-3 rounded-xl border border-slate-200 hover:bg-slate-50 flex items-center justify-between text-sm transition-colors"
+                className="p-3 rounded-xl border border-slate-800 bg-slate-800/40 hover:bg-slate-800/80 flex items-center justify-between text-sm transition-colors"
               >
                 <div>
-                  <span className="font-semibold text-slate-900 block">{u.title}</span>
-                  <span className="text-xs font-mono text-slate-500">{u.loc}</span>
+                  <span className="font-semibold text-slate-100 block">{u.title}</span>
+                  <span className="text-xs font-mono text-slate-400">{u.loc}</span>
                 </div>
                 <button
                   onClick={() => {
                     onNavigate(u.loc);
                     onClose();
                   }}
-                  className="px-3 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-700 font-semibold text-xs rounded-lg flex items-center gap-1"
+                  className="px-3 py-1.5 bg-blue-500/15 hover:bg-blue-500/25 border border-blue-500/30 text-blue-300 font-semibold text-xs rounded-lg flex items-center gap-1 transition-colors"
                 >
                   <span>Visit</span>
                   <ExternalLink className="w-3.5 h-3.5" />
@@ -92,10 +92,10 @@ export const SitemapModal: React.FC<SitemapModalProps> = ({ isOpen, onClose, onN
           </div>
         </div>
 
-        <div className="border-t border-slate-100 pt-3 flex justify-end">
+        <div className="border-t border-slate-800 pt-3 flex justify-end">
           <button
             onClick={onClose}
-            className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-lg"
+            className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs rounded-lg transition-colors"
           >
             Close Sitemap
           </button>

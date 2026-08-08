@@ -64,15 +64,15 @@ export const CookieConsent: React.FC = () => {
     <>
       {/* Cookie Banner */}
       {showBanner && !showManageModal && (
-        <div className="fixed bottom-0 inset-x-0 z-50 p-4 sm:p-6 bg-white/95 backdrop-blur-md border-t border-slate-200 shadow-2xl transition-all">
+        <div className="fixed bottom-0 inset-x-0 z-50 p-4 sm:p-6 bg-slate-900/95 backdrop-blur-md border-t border-slate-800 shadow-2xl transition-all">
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div className="flex items-start gap-3 max-w-3xl">
-              <div className="p-2 bg-blue-50 text-blue-600 rounded-lg shrink-0 mt-0.5">
+              <div className="p-2 bg-blue-500/20 text-blue-400 rounded-lg shrink-0 mt-0.5">
                 <Cookie className="w-5 h-5" />
               </div>
-              <div className="text-sm text-slate-600 leading-relaxed">
-                <span className="font-semibold text-slate-900 block mb-0.5">
-                  Privacy & Cookie Notice
+              <div className="text-sm text-slate-300 leading-relaxed">
+                <span className="font-semibold text-slate-100 block mb-0.5">
+                  Privacy &amp; Cookie Notice
                 </span>
                 We use essential cookies to ensure basic website functionality. Age calculations are processed entirely locally in your browser. With your consent, we also use cookies for analytics and non-intrusive personalized advertising.
               </div>
@@ -81,7 +81,7 @@ export const CookieConsent: React.FC = () => {
             <div className="flex flex-wrap items-center gap-2 shrink-0 w-full md:w-auto">
               <button
                 onClick={() => setShowManageModal(true)}
-                className="flex-1 md:flex-initial px-3.5 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors flex items-center justify-center gap-1.5"
+                className="flex-1 md:flex-initial px-3.5 py-2 text-xs font-semibold text-slate-200 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors flex items-center justify-center gap-1.5 border border-slate-700"
               >
                 <Sliders className="w-3.5 h-3.5" />
                 Manage Preferences
@@ -89,14 +89,14 @@ export const CookieConsent: React.FC = () => {
 
               <button
                 onClick={handleRejectNonEssential}
-                className="flex-1 md:flex-initial px-3.5 py-2 text-xs font-semibold text-slate-700 border border-slate-300 hover:bg-slate-50 rounded-lg transition-colors"
+                className="flex-1 md:flex-initial px-3.5 py-2 text-xs font-semibold text-slate-300 border border-slate-700 hover:bg-slate-800 rounded-lg transition-colors"
               >
                 Reject Non-Essential
               </button>
 
               <button
                 onClick={handleAcceptAll}
-                className="flex-1 md:flex-initial px-4 py-2 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-sm transition-colors flex items-center justify-center gap-1"
+                className="flex-1 md:flex-initial px-4 py-2 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 rounded-lg shadow-sm transition-colors flex items-center justify-center gap-1"
               >
                 <Check className="w-3.5 h-3.5" />
                 Accept All
@@ -108,34 +108,34 @@ export const CookieConsent: React.FC = () => {
 
       {/* Preference Modal */}
       {showManageModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
-          <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 space-y-5 animate-in fade-in zoom-in-95">
-            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
+          <div className="bg-slate-900 rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-800 space-y-5 animate-in fade-in zoom-in-95 text-slate-100">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <div className="flex items-center gap-2">
-                <ShieldCheck className="w-5 h-5 text-blue-600" />
-                <h3 className="text-lg font-bold text-slate-900">
-                  Cookie & Privacy Preferences
+                <ShieldCheck className="w-5 h-5 text-blue-400" />
+                <h3 className="text-lg font-bold text-slate-100">
+                  Cookie &amp; Privacy Preferences
                 </h3>
               </div>
               <button
                 onClick={() => setShowManageModal(false)}
-                className="text-slate-400 hover:text-slate-600 p-1 rounded-lg"
+                className="text-slate-400 hover:text-slate-200 p-1 rounded-lg hover:bg-slate-800"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="space-y-4 text-sm text-slate-600">
+            <div className="space-y-4 text-sm text-slate-300">
               {/* Necessary */}
-              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+              <div className="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700 flex items-center justify-between">
                 <div>
-                  <div className="font-semibold text-slate-900 flex items-center gap-2">
+                  <div className="font-semibold text-slate-100 flex items-center gap-2">
                     <span>Necessary Cookies</span>
-                    <span className="text-[10px] bg-blue-100 text-blue-800 font-bold px-2 py-0.5 rounded-full uppercase">
+                    <span className="text-[10px] bg-blue-500/20 text-blue-300 font-bold px-2 py-0.5 rounded-full uppercase border border-blue-500/30">
                       Always Active
                     </span>
                   </div>
-                  <p className="text-xs text-slate-500 mt-0.5">
+                  <p className="text-xs text-slate-400 mt-0.5">
                     Required for core website security, theme, and age calculator functionality.
                   </p>
                 </div>
@@ -148,10 +148,10 @@ export const CookieConsent: React.FC = () => {
               </div>
 
               {/* Analytics */}
-              <div className="p-3.5 rounded-xl border border-slate-200 flex items-center justify-between hover:bg-slate-50/50 transition-colors">
+              <div className="p-3.5 rounded-xl border border-slate-800 flex items-center justify-between hover:bg-slate-800/50 transition-colors">
                 <div>
-                  <div className="font-semibold text-slate-900">Analytics Cookies</div>
-                  <p className="text-xs text-slate-500 mt-0.5">
+                  <div className="font-semibold text-slate-100">Analytics Cookies</div>
+                  <p className="text-xs text-slate-400 mt-0.5">
                     Helps us understand website traffic and performance anonymously.
                   </p>
                 </div>
@@ -166,10 +166,10 @@ export const CookieConsent: React.FC = () => {
               </div>
 
               {/* Advertising */}
-              <div className="p-3.5 rounded-xl border border-slate-200 flex items-center justify-between hover:bg-slate-50/50 transition-colors">
+              <div className="p-3.5 rounded-xl border border-slate-800 flex items-center justify-between hover:bg-slate-800/50 transition-colors">
                 <div>
-                  <div className="font-semibold text-slate-900">Advertising Cookies</div>
-                  <p className="text-xs text-slate-500 mt-0.5">
+                  <div className="font-semibold text-slate-100">Advertising Cookies</div>
+                  <p className="text-xs text-slate-400 mt-0.5">
                     Allows Google AdSense to serve relevant advertisements.
                   </p>
                 </div>
@@ -184,16 +184,16 @@ export const CookieConsent: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex items-center justify-end gap-3 pt-2 border-t border-slate-100">
+            <div className="flex items-center justify-end gap-3 pt-2 border-t border-slate-800">
               <button
                 onClick={() => setShowManageModal(false)}
-                className="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-slate-800"
+                className="px-4 py-2 text-xs font-semibold text-slate-400 hover:text-slate-200"
               >
                 Cancel
               </button>
               <button
                 onClick={() => savePreferences(preferences)}
-                className="px-5 py-2 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-sm"
+                className="px-5 py-2 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 rounded-lg shadow-sm"
               >
                 Save Preferences
               </button>

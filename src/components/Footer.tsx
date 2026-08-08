@@ -28,9 +28,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
   return (
     <>
-      <footer className="bg-slate-900 text-slate-300 border-t border-slate-800 pt-12 pb-8 mt-16">
+      <footer className="bg-slate-950 text-slate-300 border-t border-slate-800/80 pt-12 pb-8 mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-slate-800">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-slate-800/80">
             {/* Brand Column */}
             <div className="md:col-span-1 space-y-3">
               <button
@@ -75,7 +75,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             {/* Legal Links Column */}
             <div>
               <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">
-                Legal & Compliance
+                Legal &amp; Compliance
               </h3>
               <ul className="space-y-2.5 text-sm">
                 {legalLinks.map((item) => (
@@ -94,7 +94,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             {/* SEO & Infrastructure */}
             <div>
               <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">
-                SEO & AdSense Ready
+                SEO &amp; AdSense Ready
               </h3>
               <p className="text-xs text-slate-400 leading-relaxed mb-3">
                 Built with mobile-first responsive architecture, semantic metadata, and Google AdSense placeholder containers.
@@ -102,14 +102,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <div className="flex flex-wrap gap-2 text-xs">
                 <button
                   onClick={() => setSitemapOpen(true)}
-                  className="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center gap-1.5 transition-colors"
+                  className="px-2.5 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 flex items-center gap-1.5 transition-colors"
                 >
                   <FileCode className="w-3.5 h-3.5 text-blue-400" />
                   <span>Sitemap.xml</span>
                 </button>
                 <button
                   onClick={() => setRobotsOpen(true)}
-                  className="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center gap-1.5 transition-colors"
+                  className="px-2.5 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 flex items-center gap-1.5 transition-colors"
                 >
                   <FileText className="w-3.5 h-3.5 text-emerald-400" />
                   <span>Robots.txt</span>
@@ -121,7 +121,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Bottom Copyright & Placeholders info */}
           <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
             <div>© 2026 Age Calculator. All rights reserved.</div>
-            <div className="text-[11px] text-slate-500 bg-slate-800/60 px-3 py-1 rounded-md border border-slate-700/50">
+            <div className="text-[11px] text-slate-400 bg-slate-900/80 px-3 py-1 rounded-md border border-slate-800">
               Site Configuration Placeholders: [WEBSITE OWNER NAME] • [YOUR EMAIL ADDRESS] • [YOUR DOMAIN]
             </div>
           </div>

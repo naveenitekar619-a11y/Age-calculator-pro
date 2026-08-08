@@ -104,14 +104,14 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
   return (
     <section id={id} className="my-12">
       <div className="text-center max-w-2xl mx-auto mb-8">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold mb-3">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/15 text-blue-400 border border-blue-500/30 text-xs font-bold mb-3">
           <HelpCircle className="w-3.5 h-3.5" />
           <span>Got Questions?</span>
         </div>
-        <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-bold text-slate-100 tracking-tight">
           Frequently Asked Questions
         </h2>
-        <p className="text-slate-600 text-sm sm:text-base mt-2">
+        <p className="text-slate-300 text-sm sm:text-base mt-2">
           Everything you need to know about exact age calculations, calendar rules, and privacy.
         </p>
       </div>
@@ -124,7 +124,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search FAQ questions..."
-            className="w-full pl-11 pr-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-2xs"
+            className="w-full pl-11 pr-4 py-3 rounded-xl border border-slate-800 bg-slate-900 text-slate-100 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm placeholder-slate-500"
           />
         </div>
       )}
@@ -135,15 +135,15 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
           return (
             <div
               key={item.id}
-              className="border border-slate-200/90 rounded-2xl bg-white overflow-hidden shadow-2xs transition-all"
+              className="border border-slate-800 rounded-2xl bg-slate-900 overflow-hidden shadow-sm transition-all"
             >
               <button
                 onClick={() => toggleAccordion(item.id)}
-                className="w-full px-5 py-4 text-left flex items-center justify-between gap-4 font-semibold text-slate-900 hover:text-blue-600 focus:outline-none focus:bg-slate-50 transition-colors"
+                className="w-full px-5 py-4 text-left flex items-center justify-between gap-4 font-semibold text-slate-100 hover:text-blue-400 focus:outline-none focus:bg-slate-800/80 transition-colors"
                 aria-expanded={isOpen}
               >
                 <span className="text-base">{item.question}</span>
-                <span className="p-1 rounded-lg bg-slate-100 text-slate-500 shrink-0">
+                <span className="p-1 rounded-lg bg-slate-800 text-slate-300 shrink-0">
                   {isOpen ? (
                     <ChevronUp className="w-4 h-4" />
                   ) : (
@@ -153,7 +153,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
               </button>
 
               {isOpen && (
-                <div className="px-5 pb-5 pt-1 text-sm text-slate-600 border-t border-slate-100 leading-relaxed bg-slate-50/50">
+                <div className="px-5 pb-5 pt-2 text-sm text-slate-300 border-t border-slate-800 leading-relaxed bg-slate-950/40">
                   {item.answer}
                 </div>
               )}
@@ -162,7 +162,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
         })}
 
         {filteredItems.length === 0 && (
-          <div className="text-center py-8 text-slate-500 text-sm bg-white rounded-2xl border border-slate-200">
+          <div className="text-center py-8 text-slate-400 text-sm bg-slate-900 rounded-2xl border border-slate-800">
             No matching questions found for &quot;{searchQuery}&quot;.
           </div>
         )}

@@ -37,16 +37,16 @@ const EXAMPLES: AgeExample[] = [
 
 export const ExamplesSection: React.FC = () => {
   return (
-    <section className="my-12 bg-slate-50 border border-slate-200/80 rounded-3xl p-6 sm:p-8">
+    <section className="my-12 bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8">
       <div className="max-w-3xl mb-8">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold mb-3">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/15 text-blue-400 border border-blue-500/30 text-xs font-bold mb-3">
           <Calendar className="w-3.5 h-3.5" />
           <span>Educational Guidance</span>
         </div>
-        <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-bold text-slate-100 tracking-tight">
           Age Calculation Examples
         </h2>
-        <p className="text-slate-600 text-sm sm:text-base mt-2 leading-relaxed">
+        <p className="text-slate-300 text-sm sm:text-base mt-2 leading-relaxed">
           Explore real-world calculation scenarios illustrating how calendar-based month offsets, birthday anniversaries, and leap year days operate in practice.
         </p>
       </div>
@@ -55,43 +55,43 @@ export const ExamplesSection: React.FC = () => {
         {EXAMPLES.map((ex, idx) => (
           <div
             key={idx}
-            className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-xs flex flex-col justify-between hover:shadow-md transition-shadow"
+            className="bg-slate-800/80 rounded-2xl p-5 border border-slate-700/80 shadow-xs flex flex-col justify-between hover:border-slate-600 transition-all"
           >
             <div>
               <div className="flex items-center justify-between gap-2 mb-3">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2.5 py-1 rounded-lg">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-blue-400 bg-blue-500/15 border border-blue-500/20 px-2.5 py-1 rounded-lg">
                   Example #{idx + 1}
                 </span>
-                <span className="text-xs text-slate-400 font-mono">Sample Data</span>
+                <span className="text-xs text-slate-500 font-mono">Sample Data</span>
               </div>
 
-              <h3 className="text-lg font-bold text-slate-900 mb-3">{ex.title}</h3>
+              <h3 className="text-lg font-bold text-slate-100 mb-3">{ex.title}</h3>
 
-              <div className="space-y-2 text-xs bg-slate-50 p-3 rounded-xl border border-slate-100 mb-4">
-                <div className="flex justify-between items-center text-slate-600">
+              <div className="space-y-2 text-xs bg-slate-900 p-3 rounded-xl border border-slate-800 mb-4">
+                <div className="flex justify-between items-center text-slate-400">
                   <span>Date of Birth:</span>
-                  <strong className="text-slate-900">{ex.dobFormatted}</strong>
+                  <strong className="text-slate-200">{ex.dobFormatted}</strong>
                 </div>
-                <div className="flex justify-between items-center text-slate-600">
+                <div className="flex justify-between items-center text-slate-400">
                   <span>Calculation Date:</span>
-                  <strong className="text-slate-900">{ex.asOfFormatted}</strong>
+                  <strong className="text-slate-200">{ex.asOfFormatted}</strong>
                 </div>
               </div>
 
-              <div className="p-3 bg-emerald-50 border border-emerald-200/80 rounded-xl mb-3">
-                <span className="block text-[11px] font-bold uppercase text-emerald-800 mb-0.5">
+              <div className="p-3 bg-emerald-950/60 border border-emerald-800/80 rounded-xl mb-3">
+                <span className="block text-[11px] font-bold uppercase text-emerald-400 mb-0.5">
                   Result
                 </span>
-                <span className="text-base font-extrabold text-emerald-950">
+                <span className="text-base font-extrabold text-emerald-200">
                   {ex.resultString}
                 </span>
               </div>
 
-              <p className="text-xs text-slate-600 leading-relaxed">{ex.description}</p>
+              <p className="text-xs text-slate-300 leading-relaxed">{ex.description}</p>
             </div>
 
-            <div className="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-400 flex items-center gap-1">
-              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+            <div className="mt-4 pt-3 border-t border-slate-700/60 text-[11px] text-slate-400 flex items-center gap-1">
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
               <span>Verified Calendar Calculation</span>
             </div>
           </div>
